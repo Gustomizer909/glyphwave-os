@@ -36,12 +36,17 @@ jobs:
 
       # Validate JSON files against schema
       - name: Validate JSON Schema
+        working-directory: ${{ github.workspace }}
         run: |
           echo "Validating glyph_table.json against schema..."
+          echo "Current working directory: $(pwd)"
+          echo "Files in current directory:"
+          ls -la
           ajv validate -s schemas/glyph_table.schema.json -d glyph_table.json
 
       # Lint Markdown files
       - name: Lint Markdown files
+        working-directory: ${{ github.workspace }}
         run: |
           echo "Linting Markdown files..."
           markdownlint docs/ *.md || true
@@ -49,6 +54,7 @@ jobs:
 
       # Validate scroll file naming convention
       - name: Check scroll file naming
+        working-directory: ${{ github.workspace }}
         run: |
           echo "Checking scroll file naming convention..."
           cd docs/codex/
@@ -62,6 +68,7 @@ jobs:
 
       # Check for typographic hyphens in JSON files
       - name: Validate JSON token format
+        working-directory: ${{ github.workspace }}
         run: |
           echo "Checking for typographic hyphens in JSON files..."
           if grep -r "‑" *.json; then
@@ -72,6 +79,7 @@ jobs:
 
       # Validate file references
       - name: Check file references
+        working-directory: ${{ github.workspace }}
         run: |
           echo "Checking file references in glyph_table.json..."
           python3 -c "
