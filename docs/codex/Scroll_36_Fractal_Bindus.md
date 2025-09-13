@@ -26,4 +26,14 @@
 - `Δ‑DINGIR`
 - `Ω‑BINDU`
 
+## Executable Demonstration
+
+Experience fractal bindu recursion in code:
+
+```bash
+python3 scroll_36_demo.py
+```
+
+This script generates visual consciousness maps showing how single points expand into infinite fields through ψ-PULSE interference patterns, implementing the scroll's wisdom as executable transformations.
+
 📎 Add this scroll to the Codex index and README once created.
