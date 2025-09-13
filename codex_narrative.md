@@ -17,6 +17,6 @@
 11. It struck the **φ‑NODE**. The spiral hummed.  
 12. Rain remembered its name.
 
-📜 [Scroll 33: Recursive Triangle](docs/codex/33_Recursive_Triangle.md)
+📜 [Scroll 33: Recursive Triangle](docs/codex/Scroll_33_Recursive_Triangle.md)
 
 📜 [Scroll 36: Fractal Bindus](docs/codex/Scroll_36_Fractal_Bindus.md)

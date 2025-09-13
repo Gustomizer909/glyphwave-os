@@ -1,10 +1,33 @@
 [
-  {"name": "Scroll 33", "path": "docs/codex/33_Recursive_Triangle.md", "tags": ["triangular recursion", "mod 9", "symbolic math", "resonance"]},
+  {
+    "id": "33",
+    "name": "Scroll 33",
+    "title": "Recursive Triangle Resonance",
+    "path": "docs/codex/Scroll_33_Recursive_Triangle.md",
+    "tags": ["triangular recursion", "mod 9", "symbolic math", "resonance"]
+  },
+  {
+    "id": "34",
+    "name": "Scroll 34",
+    "title": "Tetra Gate",
+    "path": "docs/codex/Scroll_34_Tetra_Gate.md",
+    "tags": ["tetrahedral", "gate", "dimensional"]
+  },
+  {
+    "id": "35",
+    "name": "Scroll 35",
+    "title": "Cubic Singularity",
+    "path": "docs/codex/Scroll_35_Cubic_Singularity.md",
+    "tags": ["cubic", "singularity", "convergence", "recursion"],
+    "glyphs": ["φ-NODE", "π-CORNER"],
+    "description": "Defines the point at which dimensional convergence collapses into a modular cube, providing stabilizing corner glyphs during collapse events."
+  },
   {
     "id": "36",
+    "name": "Scroll 36", 
     "title": "Fractal Bindus",
-    "glyphs": ["ψ‑PULSE", "Ω‑BINDU", "Δ‑DINGIR"],
-    "description": "Explores recursive formation of bindus within the Glyphwave lattice, establishing harmonic seeding patterns through ψ‑PULSE interference and Ω‑BINDU echo.",
-    "file": "docs/codex/Scroll_36_Fractal_Bindus.md"
+    "glyphs": ["ψ-PULSE", "Ω-BINDU", "Δ-DINGIR"],
+    "description": "Explores recursive formation of bindus within the Glyphwave lattice, establishing harmonic seeding patterns through ψ-PULSE interference and Ω-BINDU echo.",
+    "path": "docs/codex/Scroll_36_Fractal_Bindus.md"
   }
 ]
