@@ -1,3 +1,3 @@
-# Scroll 34 Tetra Gate
+# Scroll 34: Tetra Gate
 
 Content for Scroll 34 Tetra Gate...

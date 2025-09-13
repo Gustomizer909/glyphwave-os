@@ -1,4 +1,4 @@
-# This is a basic workflow to help you get started with Actions
+# Glyphwave OS Validation and Linting Workflow
 
 name: CI
 
@@ -15,8 +15,7 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
+  validate:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -25,12 +24,66 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
+      # Set up Node.js for JSON schema validation
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      # Install ajv-cli for JSON schema validation
+      - name: Install JSON validation tools
+        run: npm install -g ajv-cli markdownlint-cli
+
+      # Validate JSON files against schema
+      - name: Validate JSON Schema
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          echo "Validating glyph_table.json against schema..."
+          ajv validate -s schemas/glyph_table.schema.json -d glyph_table.json
+
+      # Lint Markdown files
+      - name: Lint Markdown files
+        run: |
+          echo "Linting Markdown files..."
+          markdownlint docs/ *.md || true
+          echo "Markdown linting completed (warnings allowed)"
+
+      # Validate scroll file naming convention
+      - name: Check scroll file naming
+        run: |
+          echo "Checking scroll file naming convention..."
+          cd docs/codex/
+          for file in Scroll_*.md; do
+            if [[ ! "$file" =~ ^Scroll_[0-9]+_[A-Za-z_]+\.md$ ]]; then
+              echo "ERROR: $file does not follow naming convention Scroll_##_Title.md"
+              exit 1
+            fi
+          done
+          echo "All scroll files follow naming convention ✓"
+
+      # Check for typographic hyphens in JSON files
+      - name: Validate JSON token format
+        run: |
+          echo "Checking for typographic hyphens in JSON files..."
+          if grep -r "‑" *.json; then
+            echo "ERROR: Found typographic hyphens (‑) in JSON files. Use ASCII hyphens (-) instead."
+            exit 1
+          fi
+          echo "JSON files use correct ASCII hyphens ✓"
+
+      # Validate file references
+      - name: Check file references
+        run: |
+          echo "Checking file references in glyph_table.json..."
+          python3 -c "
+          import json
+          with open('glyph_table.json', 'r') as f:
+              data = json.load(f)
+          
+          import os
+          for item in data:
+              file_path = item.get('path') or item.get('file')
+              if file_path and not os.path.exists(file_path):
+                  print(f'ERROR: Referenced file does not exist: {file_path}')
+                  exit(1)
+          print('All file references are valid ✓')
+          "

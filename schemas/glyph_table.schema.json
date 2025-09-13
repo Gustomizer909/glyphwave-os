@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/Gustomizer909/glyphwave-os/schemas/glyph_table.schema.json",
+  "title": "Glyphwave OS Scroll Collection Schema",
+  "description": "Schema for validating the glyph_table.json file containing scroll metadata",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^[0-9]+$",
+        "description": "Scroll identifier (numeric string)"
+      },
+      "name": {
+        "type": "string",
+        "pattern": "^Scroll [0-9]+$",
+        "description": "Human-readable scroll name"
+      },
+      "title": {
+        "type": "string",
+        "description": "Scroll title without number prefix"
+      },
+      "path": {
+        "type": "string",
+        "pattern": "^docs/codex/Scroll_[0-9]+_[A-Za-z_]+\\.md$",
+        "description": "Path to scroll file following Scroll_##_Title.md format"
+      },
+      "file": {
+        "type": "string",
+        "pattern": "^docs/codex/Scroll_[0-9]+_[A-Za-z_]+\\.md$",
+        "description": "Alternative file path field following Scroll_##_Title.md format"
+      },
+      "tags": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Array of descriptive tags"
+      },
+      "glyphs": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9Ψψφ∴ΛΞΘΣΔΩΓ⨳π|→φ-]+$",
+          "description": "Glyph tokens using ASCII hyphens"
+        },
+        "description": "Array of associated glyph tokens"
+      },
+      "description": {
+        "type": "string",
+        "description": "Detailed description using ASCII hyphens for machine-readable tokens"
+      }
+    },
+    "required": ["name"],
+    "anyOf": [
+      {"required": ["path"]},
+      {"required": ["file"]}
+    ],
+    "additionalProperties": false
+  }
+}
