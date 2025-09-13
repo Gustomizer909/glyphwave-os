@@ -20,3 +20,13 @@ The cube as a six-faced boundary is encoded with φ-based internal diagonals. Th
 - Precedes: Scroll 34 (Tetra Gate)
 - Follows: Scroll 36 (Fractal Bindus)
 - Nested inside: φ‑NODE and π‑CORNER
+
+## Executable Demonstration
+
+Experience cubic singularity collapse in 3D:
+
+```bash
+python3 scroll_35_demo.py
+```
+
+This script visualizes the three phases of dimensional convergence: φ-NODE spiral expansion, collapse event singularity, and π-CORNER stabilization into a modular cube structure.
